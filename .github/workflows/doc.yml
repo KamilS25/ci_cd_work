@@ -1,0 +1,41 @@
+name: Generate Documentation
+
+on:
+  push:
+    branches:
+      - main
+      - development
+      - release
+
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  documentation:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+
+      - name: Create documentation directory
+        run: mkdir -p generated_docs
+
+      - name: Generate HTML documentation
+        run: python -m pydoc -w calculator
+          mv calculator.html generated_docs/
+
+      - name: Upload documentation
+        uses: actions/upload-artifact@v7
+        with:
+          name: calculator-documentation
+          path: generated_docs/
