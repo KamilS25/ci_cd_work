@@ -31,7 +31,8 @@ jobs:
         run: mkdir -p generated_docs
 
       - name: Generate HTML documentation
-        run: python -m pydoc -w calculator|
+        run: | 
+          python -m pydoc -w calculator
           mv calculator.html generated_docs/
 
       - name: Upload documentation
