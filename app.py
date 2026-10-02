@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
-from calculator import add, subtract
+from calculator import add, subtract, multiply, divide
 
 def calculate():
     """Read input values, perform the selected operation, and show the result"""
@@ -10,18 +10,25 @@ def calculate():
 
         if operation.get() == "+":
             result = add(first_number, second_number)
-        else:
+
+        elif operation.get() == "-":
             result = subtract(first_number, second_number)
+
+        elif operation.get() == "*":
+            result = multiply(first_number, second_number)
+
+        elif operation.get() == "/":
+            result = divide(first_number, second_number)
 
         result_label.config(text=f"Результат: {result:g}")
 
-    except ValueError:
-        messagebox.showerror("Ошибка", "Введите корректные числа")
+    except ValueError as error:
+        messagebox.showerror("Ошибка", str(error))
 
 
 root = tk.Tk()
 root.title("Простой калькулятор")
-root.geometry("320x300")
+root.geometry("500x300")
 root.resizable(False, False)
 
 title_label = tk.Label(root, text="Калькулятор", font=("Arial", 16))
@@ -59,6 +66,22 @@ subtract_radio = tk.Radiobutton(
     value="-",
 )
 subtract_radio.pack(side=tk.LEFT, padx=5)
+
+multiply_radio = tk.Radiobutton(
+    operations_frame,
+    text="Умножение (*)",
+    variable=operation,
+    value="*",
+)
+multiply_radio.pack(side=tk.LEFT, padx=5)
+
+divide_radio = tk.Radiobutton(
+    operations_frame,
+    text="Деление (/)",
+    variable=operation,
+    value="/",
+)
+divide_radio.pack(side=tk.LEFT, padx=5)
 
 calculate_button = tk.Button(root, text="Вычислить", command=calculate)
 calculate_button.pack(pady=10)
