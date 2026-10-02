@@ -65,3 +65,16 @@ def divide(a, b):
         raise ValueError("Division by zero is not allowed.")
 
     return a / b
+
+def power(a, b):
+    """
+    Raise a number to the specified power.
+
+    Args:
+        a: Base number.
+        b: Exponent.
+
+    Returns:
+        Result of raising a to the power of b.
+    """
+    return a ** b
