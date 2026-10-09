@@ -28,3 +28,4 @@ python -m unittest discover -s tests -v
 ## Версия 2.1
 
 Изменение для required check 
+Auto-merge выполняется после успешного прохождения обязательных CI-проверок.
