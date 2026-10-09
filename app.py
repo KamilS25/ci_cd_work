@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
-from calculator import add, subtract, multiply, divide, power
+from calculator import add, subtract, multiply, divide, power, reminder_del
 
 def calculate():
     """Read input values, perform the selected operation, and show the result"""
@@ -23,6 +23,9 @@ def calculate():
         elif operation.get() == "^":
             result = power(first_number, second_number)
 
+        elif operation.get() == "%":
+            result = reminder_del(first_number, second_number)
+
         result_label.config(text=f"Результат: {result:g}")
 
     except ValueError as error:
@@ -31,7 +34,7 @@ def calculate():
 
 root = tk.Tk()
 root.title("Простой калькулятор")
-root.geometry("600x300")
+root.geometry("1000x300")
 root.resizable(False, False)
 
 title_label = tk.Label(root, text="Калькулятор", font=("Arial", 16))
@@ -93,6 +96,14 @@ power_radio = tk.Radiobutton(
     value="^",
 )
 power_radio.pack(side=tk.LEFT, padx=5)
+
+reminder_radio = tk.Radiobutton(
+    operations_frame,
+    text="Остаток от деления (%)",
+    variable=operation,
+    value="%",
+)
+reminder_radio.pack(side=tk.LEFT, padx=5)
 
 calculate_button = tk.Button(root, text="Вычислить", command=calculate)
 calculate_button.pack(pady=10)

@@ -78,3 +78,18 @@ def power(a, b):
         Result of raising a to the power of b.
     """
     return a ** b
+
+def reminder_del(a, b):
+    """
+    Return the result of reminder of the division
+    Args:
+        a: Base number.
+        b: Exponent.
+
+    Returns:
+        Result of reminder of the division.
+    """
+    if b == 0:
+        raise ValueError("Division by zero is not allowed.")
+
+    return a % b
