@@ -1,6 +1,6 @@
 import unittest
 
-from calculator import add, subtract, multiply, divide, reminder_del
+from calculator import add, subtract, multiply, divide, power, reminder_del
 
 
 class TestCalculator(unittest.TestCase):
@@ -30,6 +30,11 @@ class TestCalculator(unittest.TestCase):
         with self.assertRaises(ValueError):
             divide(10, 0)
 
+    def test_power(self):
+        self.assertEqual(power(2, 3), 8)
+
+    def test_power_zero(self):
+        self.assertEqual(power(5, 0), 1)
     def test_reminder_of_division_null(self):
         with self.assertRaises(ValueError):
             divide(10, 0)
