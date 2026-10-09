@@ -17,3 +17,10 @@ def divide(a, b):
         raise ValueError("Division by zero is not allowed.")
 
     return a / b
+
+def reminder_del(a, b):
+    """Return the result of reminder of the division"""
+    if b == 0:
+        raise ValueError("Division by zero is not allowed.")
+
+    return a % b

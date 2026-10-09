@@ -1,6 +1,6 @@
 import unittest
 
-from calculator import add, subtract, multiply, divide
+from calculator import add, subtract, multiply, divide, reminder_del
 
 
 class TestCalculator(unittest.TestCase):
@@ -29,6 +29,13 @@ class TestCalculator(unittest.TestCase):
     def test_divide_by_zero(self):
         with self.assertRaises(ValueError):
             divide(10, 0)
+
+    def test_reminder_of_division_null(self):
+        with self.assertRaises(ValueError):
+            divide(10, 0)
+
+    def test_reminder_of_division(self):
+        self.assertEqual(reminder_del(10, 2), 5)
 
 if __name__ == "__main__":
     unittest.main()
